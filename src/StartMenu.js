@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BattleScreen from "./BattleScreen";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Item } from "@mui/material";
 import "./App.css";
 
 const StartMenu = () => {
@@ -33,10 +33,15 @@ const StartMenu = () => {
             borderColor: "text.primary",
           }}
         >
-          <div id="logo">
+          <Box sx={{ display: "grid", m: "auto" }}>
             <img src="images/game-logo.png" alt="game logo" />
-          </div>
-          <div id="input-form">
+          </Box>
+          <Box
+            sx={{
+              display: "grid",
+              gridAutoRows: "1fr",
+            }}
+          >
             <input
               id="input-text"
               type="text"
@@ -49,7 +54,7 @@ const StartMenu = () => {
               value="LET'S PLAY!"
               onClick={handleSubmit}
             />
-          </div>
+          </Box>
         </Box>
       )}
       {toggleBattleScreen && <BattleScreen username={username} />}
