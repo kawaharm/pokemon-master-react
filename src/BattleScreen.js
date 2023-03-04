@@ -1,7 +1,11 @@
 import React from "react";
 import "./App.css";
+import { LinearProgress } from "@mui/material";
+import HpBar from "./HpBar";
+import BattleData from "./battleData";
 
 const BattleScreen = ({ username }) => {
+  const { host, user, questions } = BattleData;
   return (
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays Host name, HP bar, questions, and image --> */}
@@ -9,13 +13,7 @@ const BattleScreen = ({ username }) => {
         <div id="hostBar">
           <div className="nameAndLvl"></div>
           <label for="hpBar">HP</label>
-          <progress
-            id="hostHp"
-            className="hpBar"
-            value="80"
-            min="0"
-            max="80"
-          ></progress>
+          <HpBar variant="determinate" value={host.hpValue} />
           <div className="question"></div>
         </div>
         <img
@@ -48,7 +46,7 @@ const BattleScreen = ({ username }) => {
         <div id="mainMenu" className="menu hidden">
           <div id="captionBar">
             {/* <!-- Add "What will USERNAME do?" here --> */}
-            <h3 className="caption"></h3>
+            <h3 className="caption">What will {username} do?</h3>
           </div>
           <button id="play" className="choices">
             Play
