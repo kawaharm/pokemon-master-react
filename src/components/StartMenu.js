@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BattleScreen from "./BattleScreen";
 import { Container, Box, Item } from "@mui/material";
-import "./App.css";
+import "../App.css";
 
 const StartMenu = () => {
   const [toggleBattleScreen, setToggleBattleScreen] = useState(false);

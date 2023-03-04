@@ -1,5 +1,4 @@
-import logo from "./logo.svg";
-import StartMenu from "./StartMenu";
+import StartMenu from "./components/StartMenu";
 import "./App.css";
 
 function App() {
