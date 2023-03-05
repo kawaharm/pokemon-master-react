@@ -4,11 +4,11 @@ import { Container, Box, Item } from "@mui/material";
 import "../App.css";
 
 const StartMenu = () => {
-  const [toggleBattleScreen, setToggleBattleScreen] = useState(false);
+  const [showBattleScreen, setShowBattleScreen] = useState(false);
   const [username, setUsername] = useState("Pikachu");
 
   const handleSubmit = () => {
-    setToggleBattleScreen(true);
+    setShowBattleScreen(true);
   };
 
   const handleChange = (e) => {
@@ -17,7 +17,7 @@ const StartMenu = () => {
 
   return (
     <Container maxWidth="lg">
-      {!toggleBattleScreen && (
+      {!showBattleScreen && (
         <Box
           sx={{
             display: "grid",
@@ -57,7 +57,12 @@ const StartMenu = () => {
           </Box>
         </Box>
       )}
-      {toggleBattleScreen && <BattleScreen username={username} />}
+      {showBattleScreen && (
+        <BattleScreen
+          username={username}
+          setShowBattleScreen={setShowBattleScreen}
+        />
+      )}
     </Container>
   );
 };

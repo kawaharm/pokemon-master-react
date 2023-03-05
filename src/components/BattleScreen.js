@@ -7,13 +7,14 @@ import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
 import HintMenu from "./HintMenu";
 
-const BattleScreen = ({ username }) => {
+const BattleScreen = ({ username, setShowBattleScreen }) => {
   const { host, user, questions } = BattleData;
   const [showMainMenu, setShowMainMenu] = useState(true);
   const [showPlayMenu, setShowPlayMenu] = useState(false);
   const [showHelpMenu, setShowHelpMenu] = useState(false);
   const [showHintMenu, setShowHintMenu] = useState(false);
   const [currentQuestion, setCurentQuestion] = useState(0);
+  const [correctGuess, setCorrectGuess] = useState();
 
   const handleMenuClick = (e) => {
     const choice = e.target.id;
@@ -31,6 +32,7 @@ const BattleScreen = ({ username }) => {
         setShowHintMenu(true);
         break;
       case "run":
+        setShowBattleScreen(false);
         break;
       default:
         return;
@@ -123,27 +125,16 @@ const BattleScreen = ({ username }) => {
         {/* <!-- PLAY MENU --> */}
         {showPlayMenu && (
           <PlayMenu
-            answers={questions[currentQuestion].answers}
+            choices={questions[currentQuestion].answers}
             backButton={handleBackButton}
+            correctGuess={setCorrectGuess}
           />
         )}
         {/* <!-- HELP MENU --> */}
         {showHelpMenu && <HelpMenu backButton={handleBackButton} />}
         {/* <!-- HINT MENU --> */}
         {showHintMenu && <HintMenu backButton={handleBackButton} />}
-        {/* <!-- MESSAGE MENU --> */}
-        <div id="messageMenu" className="menu hidden"></div>
         {/* <!-- VERIFY MENU --> */}
-        <div id="verifyMenu" className="menu hidden">
-          {/* <!-- Ask user to verify answer --> */}
-          <h3 id="verifyMessage" className="message">
-            Is this your final answer?
-          </h3>
-          <button className="backButton choices">Back</button>
-          <button id="verifyButton" className="choices">
-            Yes
-          </button>
-        </div>
       </div>
     </div>
   );
