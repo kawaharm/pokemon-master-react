@@ -1,15 +1,25 @@
 import React from "react";
 import "../App.js";
+import "../battleData.js";
 
-const PlayMenu = () => {
+const PlayMenu = ({ answers, backButton }) => {
   return (
     <div id="playMenu" className="menu hidden">
       {/* <!-- Displays answer choices --> */}
-      <button className="playButton choices">A: </button>
-      <button className="playButton choices">B: </button>
-      <button className="playButton choices">C: </button>
-      <button className="playButton choices">D: </button>
-      <button className="backButton choices">Back</button>
+      {answers.map(({ choice, correct }) => {
+        return (
+          <button
+            key={answers.id}
+            className="playButton choices"
+            value={correct}
+          >
+            {choice}
+          </button>
+        );
+      })}
+      <button className="backButton choices" onClick={backButton}>
+        Back
+      </button>
     </div>
   );
 };

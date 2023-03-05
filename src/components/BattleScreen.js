@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import BattleData from "../battleData";
 import HpBar from "./HpBar";
@@ -9,6 +9,45 @@ import HintMenu from "./HintMenu";
 
 const BattleScreen = ({ username }) => {
   const { host, user, questions } = BattleData;
+  const [showMainMenu, setShowMainMenu] = useState(true);
+  const [showPlayMenu, setShowPlayMenu] = useState(false);
+  const [showHelpMenu, setShowHelpMenu] = useState(false);
+  const [showHintMenu, setShowHintMenu] = useState(false);
+  const [currentQuestion, setCurentQuestion] = useState(0);
+
+  const handleMenuClick = (e) => {
+    const choice = e.target.id;
+    switch (choice) {
+      case "play":
+        setShowMainMenu(false);
+        setShowPlayMenu(true);
+        break;
+      case "help":
+        setShowMainMenu(false);
+        setShowHelpMenu(true);
+        break;
+      case "hint":
+        setShowMainMenu(false);
+        setShowHintMenu(true);
+        break;
+      case "run":
+        break;
+      default:
+        return;
+    }
+  };
+
+  const handleBackButton = () => {
+    setShowMainMenu(true);
+    setShowPlayMenu(false);
+    setShowHelpMenu(false);
+    setShowHintMenu(false);
+  };
+
+  // const renderQuestionAndChoices = () => {
+  //   setCurrentQuestion(questions)
+  // }
+
   return (
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays Host name, HP bar, questions, and image --> */}
@@ -17,7 +56,7 @@ const BattleScreen = ({ username }) => {
           <div className="nameAndLvl"></div>
           <label for="hpBar">HP</label>
           <HpBar variant="determinate" value={host.hpValue} />
-          <div className="question"></div>
+          <div className="question">{questions[currentQuestion].q}</div>
         </div>
         <img
           id="hostImage"
@@ -46,13 +85,52 @@ const BattleScreen = ({ username }) => {
       {/* <!-- Displays battle options (PLAY, HELP, HINT, RUN) --> */}
       <div id="battleContainer">
         {/* <!-- MAIN MENU --> */}
-        <MainMenu username={username} />
+        {showMainMenu && (
+          <div id="mainMenu" className="menu hidden">
+            <div id="captionBar">
+              <h3 className="caption">What will {username} do?</h3>
+            </div>
+            <button
+              id="play"
+              className="choices"
+              onClick={(e) => handleMenuClick(e)}
+            >
+              Play
+            </button>
+            <button
+              id="help"
+              className="choices"
+              onClick={(e) => handleMenuClick(e)}
+            >
+              Help
+            </button>
+            <button
+              id="hint"
+              className="choices"
+              onClick={(e) => handleMenuClick(e)}
+            >
+              Hint
+            </button>
+            <button
+              id="run"
+              className="choices"
+              onClick={(e) => handleMenuClick(e)}
+            >
+              Run
+            </button>
+          </div>
+        )}
         {/* <!-- PLAY MENU --> */}
-        <PlayMenu />
+        {showPlayMenu && (
+          <PlayMenu
+            answers={questions[currentQuestion].answers}
+            backButton={handleBackButton}
+          />
+        )}
         {/* <!-- HELP MENU --> */}
-        <HelpMenu />
+        {showHelpMenu && <HelpMenu backButton={handleBackButton} />}
         {/* <!-- HINT MENU --> */}
-        <HintMenu />
+        {showHintMenu && <HintMenu backButton={handleBackButton} />}
         {/* <!-- MESSAGE MENU --> */}
         <div id="messageMenu" className="menu hidden"></div>
         {/* <!-- VERIFY MENU --> */}
