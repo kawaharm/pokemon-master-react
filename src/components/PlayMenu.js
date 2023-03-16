@@ -4,21 +4,26 @@ import "../battleData.js";
 
 const PlayMenu = ({ choices, backButton }) => {
   const [answer, setAnswer] = useState();
-  const [verifyMessage, setVerifyMessage] = useState(false);
+  const [verifyChoice, setVerifyChoice] = useState(false);
 
   const handleChoice = (e) => {
     setAnswer(e.target.value);
-    setVerifyMessage(true);
+    setVerifyChoice(true);
   };
 
   const handleFinalAnswer = () => {
     if (answer) {
+      // 1a. Play correct answer sound
+      // 1b. Display "Its super effective" message
+      // 1c. Reduce opponent's HP
+      // 2. If opponent HP to zero, play victory sound and message
+      // 2. If not, next question
     }
   };
 
   return (
     <>
-      {!verifyMessage && (
+      {!verifyChoice && (
         <div id="playMenu" className="menu hidden">
           {choices.map(({ choice, correct }, index) => {
             return (
@@ -39,14 +44,14 @@ const PlayMenu = ({ choices, backButton }) => {
           </button>
         </div>
       )}
-      {verifyMessage && (
+      {verifyChoice && (
         <div id="verifyMenu" className="menu hidden">
           <h3 id="verifyMessage" className="message">
             Is this your final answer?
           </h3>
           <button
             className="backButton choices"
-            onClick={() => setVerifyMessage(false)}
+            onClick={() => setVerifyChoice(false)}
           >
             Back
           </button>
