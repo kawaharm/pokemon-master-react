@@ -7,7 +7,6 @@ const PlayMenu = ({ choices, backButton }) => {
   const [verifyMessage, setVerifyMessage] = useState(false);
 
   const handleChoice = (e) => {
-    console.log(e.target.value);
     setAnswer(e.target.value);
     setVerifyMessage(true);
   };
