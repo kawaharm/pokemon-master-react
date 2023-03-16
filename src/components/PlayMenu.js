@@ -5,6 +5,8 @@ import "../battleData.js";
 const PlayMenu = ({ choices, backButton }) => {
   const [answer, setAnswer] = useState();
   const [verifyChoice, setVerifyChoice] = useState(false);
+  const [correctChoiceSeq, setCorrectChoiceSeq] = useState(false);
+  const [gameOverSeq, setGameOverSeq] = useState(false);
 
   const handleChoice = (e) => {
     setAnswer(e.target.value);
@@ -18,6 +20,10 @@ const PlayMenu = ({ choices, backButton }) => {
       // 1c. Reduce opponent's HP
       // 2. If opponent HP to zero, play victory sound and message
       // 2. If not, next question
+    } else {
+      // 1. Play GAME OVER message and sound
+      // 2. Reset all stats
+      // 2. Return to start screen
     }
   };
 
