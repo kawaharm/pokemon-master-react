@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import BattleData from "../battleData";
 import Host from "./Host";
+import User from "./User";
 import MainMenu from "./MainMenu";
 import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
@@ -52,25 +53,9 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
 
   return (
     <div id="mainContainer" className="hidden">
-      <Host host={host} question={questions[currentQuestion].q} />
       {/* <!-- Displays User name, HP bar, and image --> */}
-      <div id="userContainer">
-        <img id="userImage" src="images/pikachu.png" alt="pikachu" />
-        <div id="userBar">
-          <div className="nameAndLvl">
-            <span className="username">{username}</span>
-            <span>Lv:29</span>
-          </div>
-          <label for="hpBar">HP</label>
-          <progress
-            id="userHp"
-            className="hpBar"
-            value="80"
-            min="0"
-            max="80"
-          ></progress>
-        </div>
-      </div>
+      <Host host={host} question={questions[currentQuestion].q} />
+      <User name={username} />
       {/* <!-- Displays battle options (PLAY, HELP, HINT, RUN) --> */}
       <div id="battleContainer">
         {/* <!-- MAIN MENU --> */}
