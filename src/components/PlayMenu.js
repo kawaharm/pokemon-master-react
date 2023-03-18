@@ -29,7 +29,26 @@ const PlayMenu = ({ choices, backButton }) => {
 
   return (
     <>
-      {!verifyChoice && (
+      {verifyChoice ? (
+        <div id="verifyMenu" className="menu hidden">
+          <h3 id="verifyMessage" className="message">
+            Is this your final answer?
+          </h3>
+          <button
+            className="backButton choices"
+            onClick={() => setVerifyChoice(false)}
+          >
+            Back
+          </button>
+          <button
+            id="verifyButton"
+            className="choices"
+            onClick={() => handleFinalAnswer}
+          >
+            Yes
+          </button>
+        </div>
+      ) : (
         <div id="playMenu" className="menu hidden">
           {choices.map(({ choice, correct }, index) => {
             return (
@@ -47,26 +66,6 @@ const PlayMenu = ({ choices, backButton }) => {
           })}
           <button className="backButton choices" onClick={backButton}>
             Back
-          </button>
-        </div>
-      )}
-      {verifyChoice && (
-        <div id="verifyMenu" className="menu hidden">
-          <h3 id="verifyMessage" className="message">
-            Is this your final answer?
-          </h3>
-          <button
-            className="backButton choices"
-            onClick={() => setVerifyChoice(false)}
-          >
-            Back
-          </button>
-          <button
-            id="verifyButton"
-            className="choices"
-            onClick={() => handleFinalAnswer}
-          >
-            Yes
           </button>
         </div>
       )}
