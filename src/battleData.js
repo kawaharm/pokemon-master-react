@@ -6,7 +6,7 @@ const BattleData = {
     hpMax: 100,
   },
   user: {
-    name: "Pikachu",
+    name: "Raichu",
     level: 1,
     hpValue: 100,
     hpMax: 100,

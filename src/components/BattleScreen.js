@@ -3,7 +3,6 @@ import "../App.css";
 import BattleData from "../battleData";
 import Host from "./Host";
 import User from "./User";
-import MainMenu from "./MainMenu";
 import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
 import HintMenu from "./HintMenu";
@@ -39,6 +38,7 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
         break;
       case "run":
         setShowBattleScreen(false);
+        // Reset all data
         break;
       default:
         return;
@@ -56,14 +56,16 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays User name, HP bar, and image --> */}
       <Host host={host} question={questions[currentQuestion].q} />
-      <User name={username} />
+      <User name={username ? username : user.name} />
       {/* <!-- Displays battle options (PLAY, HELP, HINT, RUN) --> */}
       <div id="battleContainer">
         {/* <!-- MAIN MENU --> */}
         {showMainMenu && (
           <div id="mainMenu" className="menu hidden">
             <div id="captionBar">
-              <h3 className="caption">What will {username} do?</h3>
+              <h3 className="caption">
+                What will {username ? username : user.name} do?
+              </h3>
             </div>
             {Object.entries(mainMenuButtons).map(([id, button], index) => (
               <button
@@ -75,34 +77,6 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
                 {button}
               </button>
             ))}
-            {/* <button
-              id="play"
-              className="choices"
-              onClick={(e) => handleMenuClick(e)}
-            >
-              Play
-            </button>
-            <button
-              id="help"
-              className="choices"
-              onClick={(e) => handleMenuClick(e)}
-            >
-              Help
-            </button>
-            <button
-              id="hint"
-              className="choices"
-              onClick={(e) => handleMenuClick(e)}
-            >
-              Hint
-            </button>
-            <button
-              id="run"
-              className="choices"
-              onClick={(e) => handleMenuClick(e)}
-            >
-              Run
-            </button> */}
           </div>
         )}
         {/* <!-- PLAY MENU --> */}

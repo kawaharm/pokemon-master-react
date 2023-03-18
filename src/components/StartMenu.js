@@ -5,7 +5,7 @@ import "../App.css";
 
 const StartMenu = () => {
   const [showBattleScreen, setShowBattleScreen] = useState(false);
-  const [username, setUsername] = useState("Pikachu");
+  const [username, setUsername] = useState();
 
   const handleSubmit = () => {
     setShowBattleScreen(true);
