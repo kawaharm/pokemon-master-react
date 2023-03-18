@@ -5,7 +5,7 @@ const HelpMenu = ({ backButton }) => {
   return (
     <div id="helpMenu" className="menu hidden">
       {/* <!-- Displays instructions  --> */}
-      <p id="howToPlay">
+      <p className="howToPlay">
         HOW TO PLAY: <br />
         Answer each question correctly until Regis' HP bar goes to zero. Hints
         (50:50 - remove two random answers, Call A Trainer - trainer gives you

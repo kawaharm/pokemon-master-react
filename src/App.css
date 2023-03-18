@@ -272,7 +272,7 @@ label {
   grid-row: 1 / span 1;
 }
 
-#howToPlay {
+.howToPlay {
   grid-column: 1 / span 3;
   grid-row: 1 / span 2;
   padding: 10px 30px;
