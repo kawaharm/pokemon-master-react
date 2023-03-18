@@ -17,19 +17,24 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
   const [currentQuestion, setCurentQuestion] = useState(0);
   const [correctGuess, setCorrectGuess] = useState();
 
+  const mainMenuButtons = {
+    play: "Play",
+    help: "Help",
+    hint: "Hint",
+    run: "Run",
+  };
+
   const handleMenuClick = (e) => {
     const choice = e.target.id;
+    setShowMainMenu(false);
     switch (choice) {
       case "play":
-        setShowMainMenu(false);
         setShowPlayMenu(true);
         break;
       case "help":
-        setShowMainMenu(false);
         setShowHelpMenu(true);
         break;
       case "hint":
-        setShowMainMenu(false);
         setShowHintMenu(true);
         break;
       case "run":
@@ -47,10 +52,6 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
     setShowHintMenu(false);
   };
 
-  // const renderQuestionAndChoices = () => {
-  //   setCurrentQuestion(questions)
-  // }
-
   return (
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays User name, HP bar, and image --> */}
@@ -64,7 +65,17 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
             <div id="captionBar">
               <h3 className="caption">What will {username} do?</h3>
             </div>
-            <button
+            {Object.entries(mainMenuButtons).map(([id, button], index) => (
+              <button
+                key={index}
+                id={id}
+                className="choices"
+                onClick={(e) => handleMenuClick(e)}
+              >
+                {button}
+              </button>
+            ))}
+            {/* <button
               id="play"
               className="choices"
               onClick={(e) => handleMenuClick(e)}
@@ -91,7 +102,7 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
               onClick={(e) => handleMenuClick(e)}
             >
               Run
-            </button>
+            </button> */}
           </div>
         )}
         {/* <!-- PLAY MENU --> */}
