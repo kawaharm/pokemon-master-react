@@ -7,8 +7,6 @@ const PlayMenu = ({ choices, backButton }) => {
   const [answer, setAnswer] = useState();
   const [menuChoice, setMenuChoice] = useState("attack");
   const [message, setMessage] = useState("");
-  const [correctChoiceSeq, setCorrectChoiceSeq] = useState(false);
-  const [gameOverSeq, setGameOverSeq] = useState(false);
 
   const handleFinalAnswer = () => {
     if (answer) {
@@ -62,16 +60,20 @@ const PlayMenu = ({ choices, backButton }) => {
         <button
           id="verifyButton"
           className="choices"
-          onClick={() => handleFinalAnswer}
+          onClick={handleFinalAnswer}
         >
           Yes
         </button>
       </div>
     ),
-    result: <MessageMenu message={message} />,
+    result: (
+      <div id="messageMenu" className="menu">
+        <h3 className="message">{message}</h3>
+      </div>
+    ),
   };
   const handleChoice = (e) => {
-    setAnswer(e.target.value);
+    setAnswer(e.target.value === "true");
     setMenuChoice("verify");
   };
 
