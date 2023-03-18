@@ -297,6 +297,7 @@ label {
 
 .message {
   grid-column: 1 / span 3;
+  padding: 10px 30px;
 }
 
 /* #fifty50.hidden,

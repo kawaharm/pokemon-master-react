@@ -8,6 +8,12 @@ const PlayMenu = ({ choices, backButton }) => {
   const [menuChoice, setMenuChoice] = useState("attack");
   const [message, setMessage] = useState("");
 
+  const handleChoice = (e) => {
+    setAnswer(e.target.value === "true");
+    setMenuChoice("verify");
+    setMessage("Is this your final answer?");
+  };
+
   const handleFinalAnswer = () => {
     if (answer) {
       // 1a. Play correct answer sound
@@ -24,6 +30,7 @@ const PlayMenu = ({ choices, backButton }) => {
     }
     setMenuChoice("result");
   };
+
   const MENU_SELECT = {
     attack: (
       <div id="playMenu" className="menu">
@@ -47,34 +54,14 @@ const PlayMenu = ({ choices, backButton }) => {
       </div>
     ),
     verify: (
-      <div id="verifyMenu" className="menu">
-        <h3 id="verifyMessage" className="message">
-          Is this your final answer?
-        </h3>
-        <button
-          className="backButton choices"
-          onClick={() => setMenuChoice("attack")}
-        >
-          Back
-        </button>
-        <button
-          id="verifyButton"
-          className="choices"
-          onClick={handleFinalAnswer}
-        >
-          Yes
-        </button>
-      </div>
+      <MessageMenu
+        message={message}
+        choice={menuChoice}
+        setMenuChoice={setMenuChoice}
+        handleFinalAnswer={handleFinalAnswer}
+      />
     ),
-    result: (
-      <div id="messageMenu" className="menu">
-        <h3 className="message">{message}</h3>
-      </div>
-    ),
-  };
-  const handleChoice = (e) => {
-    setAnswer(e.target.value === "true");
-    setMenuChoice("verify");
+    result: <MessageMenu message={message} />,
   };
 
   return <>{MENU_SELECT[menuChoice]}</>;
