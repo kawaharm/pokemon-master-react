@@ -17,7 +17,12 @@ const StartMenu = () => {
 
   return (
     <Container maxWidth="lg">
-      {!showBattleScreen && (
+      {showBattleScreen ? (
+        <BattleScreen
+          username={username}
+          setShowBattleScreen={setShowBattleScreen}
+        />
+      ) : (
         <Box
           sx={{
             display: "grid",
@@ -56,12 +61,6 @@ const StartMenu = () => {
             />
           </Box>
         </Box>
-      )}
-      {showBattleScreen && (
-        <BattleScreen
-          username={username}
-          setShowBattleScreen={setShowBattleScreen}
-        />
       )}
     </Container>
   );

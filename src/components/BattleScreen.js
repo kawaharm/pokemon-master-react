@@ -14,7 +14,6 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
   const [showHelpMenu, setShowHelpMenu] = useState(false);
   const [showHintMenu, setShowHintMenu] = useState(false);
   const [currentQuestion, setCurentQuestion] = useState(0);
-  const [correctGuess, setCorrectGuess] = useState();
 
   const mainMenuButtons = {
     play: "Play",
@@ -84,7 +83,6 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
           <PlayMenu
             choices={questions[currentQuestion].answers}
             backButton={handleBackButton}
-            correctGuess={setCorrectGuess}
           />
         )}
         {/* <!-- HELP MENU --> */}
