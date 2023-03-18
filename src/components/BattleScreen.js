@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import BattleData from "../battleData";
-import HpBar from "./HpBar";
+import Host from "./Host";
 import MainMenu from "./MainMenu";
 import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
@@ -52,20 +52,7 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
 
   return (
     <div id="mainContainer" className="hidden">
-      {/* <!-- Displays Host name, HP bar, questions, and image --> */}
-      <div id="hostContainer">
-        <div id="hostBar">
-          <div className="nameAndLvl"></div>
-          <label for="hpBar">HP</label>
-          <HpBar variant="determinate" value={host.hpValue} />
-          <div className="question">{questions[currentQuestion].q}</div>
-        </div>
-        <img
-          id="hostImage"
-          src="images/regis-philbin.png"
-          alt="regis-philbin"
-        />
-      </div>
+      <Host host={host} question={questions[currentQuestion].q} />
       {/* <!-- Displays User name, HP bar, and image --> */}
       <div id="userContainer">
         <img id="userImage" src="images/pikachu.png" alt="pikachu" />
