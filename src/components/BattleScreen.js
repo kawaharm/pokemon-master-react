@@ -7,7 +7,7 @@ import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
 import HintMenu from "./HintMenu";
 
-const BattleScreen = ({ username, setShowBattleScreen }) => {
+const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
   const { host, user, questions } = BattleData;
   const [showMainMenu, setShowMainMenu] = useState(true);
   const [showPlayMenu, setShowPlayMenu] = useState(false);
@@ -21,6 +21,8 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
     hint: "Hint",
     run: "Run",
   };
+
+  const name = username ? username : user.name;
 
   const handleMenuClick = (e) => {
     const choice = e.target.id;
@@ -37,6 +39,7 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
         break;
       case "run":
         setShowBattleScreen(false);
+        setUsername();
         // Reset all data
         break;
       default:
@@ -55,16 +58,14 @@ const BattleScreen = ({ username, setShowBattleScreen }) => {
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays User name, HP bar, and image --> */}
       <Host host={host} question={questions[currentQuestion].q} />
-      <User name={username ? username : user.name} />
+      <User user={user} name={name} />
       {/* <!-- Displays battle options (PLAY, HELP, HINT, RUN) --> */}
       <div id="battleContainer">
         {/* <!-- MAIN MENU --> */}
         {showMainMenu && (
           <div id="mainMenu" className="menu hidden">
             <div id="captionBar">
-              <h3 className="caption">
-                What will {username ? username : user.name} do?
-              </h3>
+              <h3 className="caption">What will {name} do?</h3>
             </div>
             {Object.entries(mainMenuButtons).map(([id, button], index) => (
               <button

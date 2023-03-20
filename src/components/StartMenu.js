@@ -21,6 +21,7 @@ const StartMenu = () => {
         <BattleScreen
           username={username}
           setShowBattleScreen={setShowBattleScreen}
+          setUsername={setUsername}
         />
       ) : (
         <Box
