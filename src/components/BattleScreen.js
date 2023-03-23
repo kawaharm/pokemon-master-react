@@ -14,6 +14,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
   const [showHelpMenu, setShowHelpMenu] = useState(false);
   const [showHintMenu, setShowHintMenu] = useState(false);
   const [currentQuestion, setCurentQuestion] = useState(0);
+  const [hostHp, setHostHp] = useState(host.hpValue);
 
   const mainMenuButtons = {
     play: "Play",
@@ -57,7 +58,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
   return (
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays User name, HP bar, and image --> */}
-      <Host host={host} question={questions[currentQuestion].q} />
+      <Host host={host} question={questions[currentQuestion].q} hp={hostHp} />
       <User user={user} name={name} />
       {/* <!-- Displays battle options (PLAY, HELP, HINT, RUN) --> */}
       <div id="battleContainer">

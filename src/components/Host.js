@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import HpBar from "./HpBar";
 
-const Host = ({ host, question }) => {
-  const [hp, setHp] = useState(host.hpValue);
-
+const Host = ({ host, question, hp }) => {
   return (
     <div id="hostContainer">
       <div id="hostBar">
