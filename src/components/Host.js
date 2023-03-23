@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import HpBar from "./HpBar";
 
 const Host = ({ host, question }) => {
+  const [hp, setHp] = useState(host.hpValue);
+
   return (
     <div id="hostContainer">
       <div id="hostBar">
@@ -11,7 +13,7 @@ const Host = ({ host, question }) => {
           <span>Lv:29</span>
         </div>
         <label for="hpBar">HP</label>
-        <HpBar variant="determinate" value={host.hpValue} />
+        <HpBar variant="determinate" value={hp} />
         <div className="question">{question}</div>
       </div>
       <img id="hostImage" src="images/regis-philbin.png" alt="regis-philbin" />
