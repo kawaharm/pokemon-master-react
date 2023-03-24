@@ -3,7 +3,7 @@ import "../App.js";
 import "../battleData.js";
 import MessageMenu from "./MessageMenu.js";
 
-const PlayMenu = ({ choices, backButton, damageHostHp }) => {
+const PlayMenu = ({ choices, backButton, damageHostHp, backToMainMenu }) => {
   const [answer, setAnswer] = useState();
   const [menuChoice, setMenuChoice] = useState("attack");
   const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ const PlayMenu = ({ choices, backButton, damageHostHp }) => {
     if (answer) {
       // 1a. Play correct answer sound
       // 1b. Display "Its super effective" message
-      setMessage("It's Super Effective!");
+      correctAnswerSequence();
       // 1c. Reduce opponent's HP
 
       // 2. If opponent HP to zero, play victory sound and message
@@ -34,20 +34,13 @@ const PlayMenu = ({ choices, backButton, damageHostHp }) => {
 
   const correctAnswerSequence = () => {
     damageHostHp();
+    setMessage("It's Super Effective!");
     let count = 0;
     let displayMessage = setInterval(function () {
-      setMessage("It's Super Effective!");
       if (count > 3) {
         clearInterval(displayMessage);
-        messageNode.removeChild(message);
-        updateMenu(6);
-        // Proceed to next question
-        nextQuestion(currentQuestion);
-        correctSound.pause();
-        correctSound.load();
-        suspenseSound.play();
-
         setMessage("");
+        backToMainMenu();
       }
       count++;
     }, 1000);

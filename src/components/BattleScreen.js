@@ -87,6 +87,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
             choices={questions[currentQuestion].answers}
             backButton={handleBackButton}
             damageHostHp={damageHostHp}
+            backToMainMenu={handleBackButton}
           />
         )}
         {/* <!-- HELP MENU --> */}
