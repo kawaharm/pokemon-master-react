@@ -15,6 +15,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
   const [showHintMenu, setShowHintMenu] = useState(false);
   const [currentQuestion, setCurentQuestion] = useState(0);
   const [hostHp, setHostHp] = useState(host.hpValue);
+  let damageHostHp = () => setHostHp(hostHp - 10);
 
   const mainMenuButtons = {
     play: "Play",
@@ -85,6 +86,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
           <PlayMenu
             choices={questions[currentQuestion].answers}
             backButton={handleBackButton}
+            damageHostHp={damageHostHp}
           />
         )}
         {/* <!-- HELP MENU --> */}
