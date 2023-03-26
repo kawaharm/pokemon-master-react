@@ -44,6 +44,9 @@ const PlayMenu = ({ choices, backButton, damageHostHp, backToMainMenu }) => {
       }
       count++;
     }, 1000);
+    if (hostHp <= 0) {
+      // Victory sequence
+    }
   };
 
   const MENU_SELECT = {

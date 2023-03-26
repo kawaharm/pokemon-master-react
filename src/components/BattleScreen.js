@@ -86,6 +86,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
           <PlayMenu
             choices={questions[currentQuestion].answers}
             backButton={handleBackButton}
+            hostHp={hostHp}
             damageHostHp={damageHostHp}
             backToMainMenu={handleBackButton}
           />
