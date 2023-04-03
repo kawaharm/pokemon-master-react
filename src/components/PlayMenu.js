@@ -8,8 +8,10 @@ const PlayMenu = ({
   backButton,
   hostHp,
   damageHostHp,
+  damageUserHp,
   nextQuestion,
   backToMainMenu,
+  backToStartMenu,
 }) => {
   const [answer, setAnswer] = useState();
   const [menuChoice, setMenuChoice] = useState("attack");
@@ -31,7 +33,7 @@ const PlayMenu = ({
       // 2. If opponent HP to zero, play victory sound and message
       // 2. If not, next question
     } else {
-      setMessage("You Have Fainted!");
+      gameOverSequence();
       // 1. Play GAME OVER message and sound
       // 2. Reset all stats
       // 2. Return to start screen
@@ -57,7 +59,19 @@ const PlayMenu = ({
     }
   };
 
-  const gameOverSequence = () => {};
+  const gameOverSequence = () => {
+    damageUserHp();
+    setMessage("You Have Fainted!");
+    let count = 0;
+    let displayMessage = setInterval(function () {
+      if (count > 3) {
+        clearInterval(displayMessage);
+        setMessage("");
+        backToStartMenu();
+      }
+      count++;
+    }, 1000);
+  };
 
   const MENU_SELECT = {
     attack: (

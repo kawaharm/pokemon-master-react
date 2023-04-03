@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-const User = ({ user, name }) => {
+const User = ({ user, name, hp }) => {
   return (
     <div id="userContainer">
       <img id="userImage" src="images/pikachu.png" alt="pikachu" />
@@ -14,7 +14,7 @@ const User = ({ user, name }) => {
         <progress
           id="userHp"
           className="hpBar"
-          value={user.hpValue}
+          value={hp}
           min="0"
           max={user.hpMax}
         ></progress>
