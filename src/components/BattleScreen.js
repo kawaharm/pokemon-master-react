@@ -13,9 +13,10 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
   const [showPlayMenu, setShowPlayMenu] = useState(false);
   const [showHelpMenu, setShowHelpMenu] = useState(false);
   const [showHintMenu, setShowHintMenu] = useState(false);
-  const [currentQuestion, setCurentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [hostHp, setHostHp] = useState(host.hpValue);
   let damageHostHp = () => setHostHp(hostHp - 10);
+  let nextQuestion = () => setCurrentQuestion(currentQuestion + 1);
 
   const mainMenuButtons = {
     play: "Play",
@@ -88,6 +89,7 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
             backButton={handleBackButton}
             hostHp={hostHp}
             damageHostHp={damageHostHp}
+            nextQuestion={nextQuestion}
             backToMainMenu={handleBackButton}
           />
         )}

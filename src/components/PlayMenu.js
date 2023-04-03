@@ -3,7 +3,14 @@ import "../App.js";
 import "../battleData.js";
 import MessageMenu from "./MessageMenu.js";
 
-const PlayMenu = ({ choices, backButton, damageHostHp, backToMainMenu }) => {
+const PlayMenu = ({
+  choices,
+  backButton,
+  hostHp,
+  damageHostHp,
+  nextQuestion,
+  backToMainMenu,
+}) => {
   const [answer, setAnswer] = useState();
   const [menuChoice, setMenuChoice] = useState("attack");
   const [message, setMessage] = useState("");
@@ -40,6 +47,7 @@ const PlayMenu = ({ choices, backButton, damageHostHp, backToMainMenu }) => {
       if (count > 3) {
         clearInterval(displayMessage);
         setMessage("");
+        nextQuestion();
         backToMainMenu();
       }
       count++;
