@@ -57,6 +57,8 @@ const PlayMenu = ({
     }
   };
 
+  const gameOverSequence = () => {};
+
   const MENU_SELECT = {
     attack: (
       <div id="playMenu" className="menu">
