@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "./context/Context";
 import BattleScreen from "./BattleScreen";
 import { Container, Box, Item } from "@mui/material";
 import "../App.css";
 
 const StartMenu = () => {
-  const [showBattleScreen, setShowBattleScreen] = useState(false);
   const [username, setUsername] = useState();
+  const { showBattleScreen, setShowBattleScreen } = useContext(Context);
 
   const handleSubmit = () => {
     setShowBattleScreen(true);
@@ -18,11 +19,7 @@ const StartMenu = () => {
   return (
     <Container maxWidth="lg">
       {showBattleScreen ? (
-        <BattleScreen
-          username={username}
-          setShowBattleScreen={setShowBattleScreen}
-          setUsername={setUsername}
-        />
+        <BattleScreen username={username} setUsername={setUsername} />
       ) : (
         <Box
           sx={{

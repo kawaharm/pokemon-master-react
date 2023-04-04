@@ -1,10 +1,13 @@
 import StartMenu from "./components/StartMenu";
+import ContextProvider from "./components/context/ContextProvider";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <StartMenu />
+      <ContextProvider>
+        <StartMenu />
+      </ContextProvider>
     </div>
   );
 }

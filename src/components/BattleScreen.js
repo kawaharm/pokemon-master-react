@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "./context/Context";
 import "../App.css";
 import BattleData from "../battleData";
 import Host from "./Host";
@@ -7,8 +8,9 @@ import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
 import HintMenu from "./HintMenu";
 
-const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
+const BattleScreen = ({ username, setUsername }) => {
   const { host, user, questions } = BattleData;
+  const { setShowBattleScreen } = useContext(Context);
   const [showMainMenu, setShowMainMenu] = useState(true);
   const [showPlayMenu, setShowPlayMenu] = useState(false);
   const [showHelpMenu, setShowHelpMenu] = useState(false);
@@ -94,7 +96,6 @@ const BattleScreen = ({ username, setShowBattleScreen, setUsername }) => {
             damageUserHp={damageUserHp}
             nextQuestion={nextQuestion}
             backToMainMenu={handleBackButton}
-            backToStartMenu={setShowBattleScreen}
           />
         )}
         {/* <!-- HELP MENU --> */}

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "./context/Context.js";
 import "../App.js";
 import "../battleData.js";
 import MessageMenu from "./MessageMenu.js";
@@ -11,11 +12,12 @@ const PlayMenu = ({
   damageUserHp,
   nextQuestion,
   backToMainMenu,
-  backToStartMenu,
 }) => {
+  const { setShowBattleScreen } = useContext(Context);
   const [answer, setAnswer] = useState();
   const [menuChoice, setMenuChoice] = useState("attack");
   const [message, setMessage] = useState("");
+  let backToStartMenu = () => setShowBattleScreen(false);
 
   const handleChoice = (e) => {
     setAnswer(e.target.value === "true");
