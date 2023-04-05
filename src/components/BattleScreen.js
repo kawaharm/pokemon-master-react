@@ -18,6 +18,10 @@ const BattleScreen = ({ username, setUsername }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [hostHp, setHostHp] = useState(host.hpValue);
   const [userHp, setUserHp] = useState(user.hpValue);
+  const [availableHints, setAvailableHints] = useState({
+    fiftyFifty: true,
+    callATrainer: true,
+  });
   let damageHostHp = () => setHostHp(hostHp - 10);
   let damageUserHp = () => setUserHp(0);
   let nextQuestion = () => setCurrentQuestion(currentQuestion + 1);
@@ -100,7 +104,13 @@ const BattleScreen = ({ username, setUsername }) => {
         {/* <!-- HELP MENU --> */}
         {showHelpMenu && <HelpMenu backToMainMenu={handleBackToMainMenu} />}
         {/* <!-- HINT MENU --> */}
-        {showHintMenu && <HintMenu backToMainMenu={handleBackToMainMenu} />}
+        {showHintMenu && (
+          <HintMenu
+            backToMainMenu={handleBackToMainMenu}
+            availableHints={availableHints}
+            setAvailableHints={setAvailableHints}
+          />
+        )}
         {/* <!-- VERIFY MENU --> */}
       </div>
     </div>
