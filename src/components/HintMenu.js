@@ -1,15 +1,14 @@
 import React from "react";
+import MessageMenu from "./MessageMenu";
 import "../App.css";
 
-const HintMenu = ({ backToMainMenu, availableHints, setAvailableHints }) => {
-  const handleHintSelection = (e) => {
-    let selectedHint = e.target.id;
-    if (selectedHint === "fifty50") {
-      setAvailableHints({ ...availableHints, fiftyFifty: false });
-    } else if (selectedHint === "call-a-trainer") {
-      setAvailableHints({ ...availableHints, callATrainer: false });
-    }
-  };
+const HintMenu = ({
+  backToMainMenu,
+  availableHints,
+  setAvailableHints,
+  choices,
+}) => {
+  const [hintMessage, setHintMessage] = useState("");
 
   // User clicks 50:50 button -> Removes two random wrong answer choices
   const handleFiftyFifty = () => {
@@ -34,15 +33,17 @@ const HintMenu = ({ backToMainMenu, availableHints, setAvailableHints }) => {
   const handleCallATrainer = () => {
     // Display message briefly then return to Main Menu
     let count = 0;
-    let displayMessage = setInterval(function () {
-      message.textContent;
-      if (count > 3) {
-        clearInterval(displayMessage);
-        updateMenu(6);
-        messageNode.removeChild(message);
-      }
-      count++;
-    }, 1000);
+    let correctAnswer = choices.filter((ans) => ans.correct === true);
+    console.log(correctAnswer);
+    // let displayMessage = setInterval(function () {
+    //   if (count > 3) {
+    //     clearInterval(displayMessage);
+    //     setMessage("");
+    //     nextQuestion();
+    //     backToMainMenu();
+    //   }
+    //   count++;
+    // }, 1000);
   };
 
   return (
@@ -52,7 +53,7 @@ const HintMenu = ({ backToMainMenu, availableHints, setAvailableHints }) => {
       <button
         id="fifty50"
         className="choices"
-        onClick={(e) => handleHintSelection(e)}
+        onClick={handleFiftyFifty}
         disabled={!availableHints.fiftyFifty}
       >
         50:50
@@ -60,7 +61,7 @@ const HintMenu = ({ backToMainMenu, availableHints, setAvailableHints }) => {
       <button
         id="call-a-trainer"
         className="choices"
-        onClick={(e) => handleHintSelection(e)}
+        onClick={handleCallATrainer}
         disabled={!availableHints.callATrainer}
       >
         Call A Trainer

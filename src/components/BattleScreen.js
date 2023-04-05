@@ -109,6 +109,7 @@ const BattleScreen = ({ username, setUsername }) => {
             backToMainMenu={handleBackToMainMenu}
             availableHints={availableHints}
             setAvailableHints={setAvailableHints}
+            choices={questions[currentQuestion].answers}
           />
         )}
         {/* <!-- VERIFY MENU --> */}
