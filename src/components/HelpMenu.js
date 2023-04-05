@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-const HelpMenu = ({ backButton }) => {
+const HelpMenu = ({ backToMainMenu }) => {
   return (
     <div id="helpMenu" className="menu hidden">
       {/* <!-- Displays instructions  --> */}
@@ -12,7 +12,7 @@ const HelpMenu = ({ backButton }) => {
         their best guess) can only be use once throughout entire game. Guess
         wrong once and its GAME OVER!
       </p>
-      <button className="backButton choices" onClick={backButton}>
+      <button className="backButton choices" onClick={backToMainMenu}>
         Back
       </button>
     </div>

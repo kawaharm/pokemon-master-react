@@ -54,7 +54,7 @@ const BattleScreen = ({ username, setUsername }) => {
     }
   };
 
-  const handleBackButton = () => {
+  const handleBackToMainMenu = () => {
     setShowMainMenu(true);
     setShowPlayMenu(false);
     setShowHelpMenu(false);
@@ -90,18 +90,17 @@ const BattleScreen = ({ username, setUsername }) => {
         {showPlayMenu && (
           <PlayMenu
             choices={questions[currentQuestion].answers}
-            backButton={handleBackButton}
+            backToMainMenu={handleBackToMainMenu}
             hostHp={hostHp}
             damageHostHp={damageHostHp}
             damageUserHp={damageUserHp}
             nextQuestion={nextQuestion}
-            backToMainMenu={handleBackButton}
           />
         )}
         {/* <!-- HELP MENU --> */}
-        {showHelpMenu && <HelpMenu backButton={handleBackButton} />}
+        {showHelpMenu && <HelpMenu backToMainMenu={handleBackToMainMenu} />}
         {/* <!-- HINT MENU --> */}
-        {showHintMenu && <HintMenu backButton={handleBackButton} />}
+        {showHintMenu && <HintMenu backToMainMenu={handleBackToMainMenu} />}
         {/* <!-- VERIFY MENU --> */}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-const HintMenu = ({ backButton }) => {
+const HintMenu = ({ backToMainMenu }) => {
   return (
     <div id="hintMenu" className="menu hidden">
       {/* <!-- Displays "Lifelines" to help user answer question --> */}
@@ -12,7 +12,7 @@ const HintMenu = ({ backButton }) => {
       <button id="call-a-trainer" className="choices">
         Call A Trainer
       </button>
-      <button className="backButton choices" onClick={backButton}>
+      <button className="backButton choices" onClick={backToMainMenu}>
         Back
       </button>
     </div>

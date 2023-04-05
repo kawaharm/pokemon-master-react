@@ -6,7 +6,6 @@ import MessageMenu from "./MessageMenu.js";
 
 const PlayMenu = ({
   choices,
-  backButton,
   hostHp,
   damageHostHp,
   damageUserHp,
@@ -92,7 +91,7 @@ const PlayMenu = ({
             </button>
           );
         })}
-        <button className="backButton choices" onClick={backButton}>
+        <button className="backButton choices" onClick={backToMainMenu}>
           Back
         </button>
       </div>
