@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MessageMenu from "./MessageMenu";
 import "../App.css";
 
@@ -9,6 +9,7 @@ const HintMenu = ({
   choices,
 }) => {
   const [hintMessage, setHintMessage] = useState("");
+  const [showHintMessage, setShowHintMessage] = useState(false);
 
   // User clicks 50:50 button -> Removes two random wrong answer choices
   const handleFiftyFifty = () => {
@@ -33,43 +34,51 @@ const HintMenu = ({
   const handleCallATrainer = () => {
     // Display message briefly then return to Main Menu
     let count = 0;
-    let correctAnswer = choices.filter((ans) => ans.correct === true);
-    console.log(correctAnswer);
-    // let displayMessage = setInterval(function () {
-    //   if (count > 3) {
-    //     clearInterval(displayMessage);
-    //     setMessage("");
-    //     nextQuestion();
-    //     backToMainMenu();
-    //   }
-    //   count++;
-    // }, 1000);
+    let correctChoice = choices.find((ans) => ans.correct === true).choice;
+    setHintMessage(`Trainer: I think its ${correctChoice}!`);
+    setShowHintMessage(true);
+    let displayMessage = setInterval(function () {
+      if (count > 3) {
+        clearInterval(displayMessage);
+        setShowHintMessage(false);
+        backToMainMenu();
+      }
+      count++;
+    }, 1000);
+
+    // Remove HINT
   };
 
   return (
-    <div id="hintMenu" className="menu hidden">
-      {/* <!-- Displays "Lifelines" to help user answer question --> */}
-      {/* <!-- Can only use each once per entire game --> */}
-      <button
-        id="fifty50"
-        className="choices"
-        onClick={handleFiftyFifty}
-        disabled={!availableHints.fiftyFifty}
-      >
-        50:50
-      </button>
-      <button
-        id="call-a-trainer"
-        className="choices"
-        onClick={handleCallATrainer}
-        disabled={!availableHints.callATrainer}
-      >
-        Call A Trainer
-      </button>
-      <button className="backButton choices" onClick={backToMainMenu}>
-        Back
-      </button>
-    </div>
+    <>
+      {showHintMessage ? (
+        <MessageMenu message={hintMessage} />
+      ) : (
+        <div id="hintMenu" className="menu">
+          {/* <!-- Displays "Lifelines" to help user answer question --> */}
+          {/* <!-- Can only use each once per entire game --> */}
+          <button
+            id="fifty50"
+            className="choices"
+            onClick={handleFiftyFifty}
+            disabled={!availableHints.fiftyFifty}
+          >
+            50:50
+          </button>
+          <button
+            id="call-a-trainer"
+            className="choices"
+            onClick={handleCallATrainer}
+            disabled={!availableHints.callATrainer}
+          >
+            Call A Trainer
+          </button>
+          <button className="backButton choices" onClick={backToMainMenu}>
+            Back
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
