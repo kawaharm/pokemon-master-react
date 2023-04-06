@@ -10,7 +10,7 @@ import HintMenu from "./HintMenu";
 
 const BattleScreen = ({ username, setUsername }) => {
   const { host, user, questions } = BattleData;
-  const { setShowBattleScreen } = useContext(Context);
+  const { setShowBattleScreen, setRemoveChoices } = useContext(Context);
   const [showMainMenu, setShowMainMenu] = useState(true);
   const [showPlayMenu, setShowPlayMenu] = useState(false);
   const [showHelpMenu, setShowHelpMenu] = useState(false);
@@ -51,6 +51,7 @@ const BattleScreen = ({ username, setUsername }) => {
       case "run":
         setShowBattleScreen(false);
         setUsername();
+        setRemoveChoices([]);
         // Reset all data
         break;
       default:

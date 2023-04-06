@@ -12,11 +12,15 @@ const PlayMenu = ({
   nextQuestion,
   backToMainMenu,
 }) => {
-  const { setShowBattleScreen } = useContext(Context);
+  const { setShowBattleScreen, removeChoices, setRemoveChoices } =
+    useContext(Context);
   const [answer, setAnswer] = useState();
   const [menuChoice, setMenuChoice] = useState("attack");
   const [message, setMessage] = useState("");
-  let backToStartMenu = () => setShowBattleScreen(false);
+  let backToStartMenu = () => {
+    setShowBattleScreen(false);
+    setRemoveChoices([]);
+  };
 
   const handleChoice = (e) => {
     setAnswer(e.target.value === "true");
@@ -81,7 +85,9 @@ const PlayMenu = ({
           return (
             <button
               key={index}
-              className="playButton choices"
+              className={`playButton choices ${
+                removeChoices.includes(index) && "hideChoice"
+              }`}
               value={correct}
               onClick={(e) => {
                 handleChoice(e);

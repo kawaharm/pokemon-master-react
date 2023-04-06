@@ -5,15 +5,15 @@ import Context from "./Context";
 
 const ContextProvider = ({ children }) => {
   const [showBattleScreen, setShowBattleScreen] = useState(false);
-  const [removeHints, setRemoveHints] = useState([]);
+  const [removeChoices, setRemoveChoices] = useState([]);
 
   return (
     <Context.Provider
       value={{
         showBattleScreen,
         setShowBattleScreen,
-        removeHints,
-        setRemoveHints,
+        removeChoices,
+        setRemoveChoices,
       }}
     >
       {children}

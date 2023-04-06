@@ -9,7 +9,7 @@ const HintMenu = ({
   setAvailableHints,
   choices,
 }) => {
-  const { setRemoveHints } = useContext(Context);
+  const { setRemoveChoices } = useContext(Context);
   const [hintMessage, setHintMessage] = useState("");
   const [showHintMessage, setShowHintMessage] = useState(false);
 
@@ -25,7 +25,8 @@ const HintMenu = ({
       }
     }
     // Hide two random answer choices from Play Menu
-    setRemoveHints(randomArr);
+    setRemoveChoices(randomArr);
+    console.log(randomArr);
     setAvailableHints({ ...availableHints, fiftyFifty: false });
   };
 
