@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "./context/Context";
 import MessageMenu from "./MessageMenu";
 import "../App.css";
 
@@ -8,6 +9,7 @@ const HintMenu = ({
   setAvailableHints,
   choices,
 }) => {
+  const { setRemoveHints } = useContext(Context);
   const [hintMessage, setHintMessage] = useState("");
   const [showHintMessage, setShowHintMessage] = useState(false);
 
@@ -23,7 +25,7 @@ const HintMenu = ({
       }
     }
     // Hide two random answer choices from Play Menu
-    let wrongChoices = choices.filter((ans) => ans.correct === false);
+    setRemoveHints(randomArr);
     setAvailableHints({ ...availableHints, fiftyFifty: false });
   };
 
