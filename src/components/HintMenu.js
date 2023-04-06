@@ -23,10 +23,7 @@ const HintMenu = ({
       }
     }
     // Hide two random answer choices from Play Menu
-    // ..........
-    // ..........
-    // ..........
-    // ..........
+    let wrongChoices = choices.filter((ans) => ans.correct === false);
     setAvailableHints({ ...availableHints, fiftyFifty: false });
   };
 
@@ -45,8 +42,7 @@ const HintMenu = ({
       }
       count++;
     }, 1000);
-
-    // Remove HINT
+    setAvailableHints({ ...availableHints, callATrainer: false });
   };
 
   return (
@@ -65,14 +61,16 @@ const HintMenu = ({
           >
             50:50
           </button>
-          <button
-            id="call-a-trainer"
-            className="choices"
-            onClick={handleCallATrainer}
-            disabled={!availableHints.callATrainer}
-          >
-            Call A Trainer
-          </button>
+          {availableHints.callATrainer && (
+            <button
+              id="call-a-trainer"
+              className="choices"
+              onClick={handleCallATrainer}
+              disabled={!availableHints.callATrainer}
+            >
+              Call A Trainer
+            </button>
+          )}
           <button className="backButton choices" onClick={backToMainMenu}>
             Back
           </button>
