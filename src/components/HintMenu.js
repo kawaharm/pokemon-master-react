@@ -26,7 +26,7 @@ const HintMenu = ({
     }
     // Hide two random answer choices from Play Menu
     setRemoveChoices(randomArr);
-    console.log(randomArr);
+    backToMainMenu();
     setAvailableHints({ ...availableHints, fiftyFifty: false });
   };
 
@@ -56,14 +56,16 @@ const HintMenu = ({
         <div id="hintMenu" className="menu">
           {/* <!-- Displays "Lifelines" to help user answer question --> */}
           {/* <!-- Can only use each once per entire game --> */}
-          <button
-            id="fifty50"
-            className="choices"
-            onClick={handleFiftyFifty}
-            disabled={!availableHints.fiftyFifty}
-          >
-            50:50
-          </button>
+          {availableHints.fiftyFifty && (
+            <button
+              id="fifty50"
+              className="choices"
+              onClick={handleFiftyFifty}
+              disabled={!availableHints.fiftyFifty}
+            >
+              50:50
+            </button>
+          )}
           {availableHints.callATrainer && (
             <button
               id="call-a-trainer"
