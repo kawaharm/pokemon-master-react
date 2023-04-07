@@ -26,6 +26,11 @@ const PlayMenu = ({
     setAnswer(e.target.value === "true");
     setMenuChoice("verify");
     setMessage("Is this your final answer?");
+
+    const wrongChoices = (wc) => wc.correct === false;
+    let randomArr = [];
+    choices.map((c) => randomArr.push(choices.findIndex(wrongChoices)));
+    console.log(randomArr);
   };
 
   const handleFinalAnswer = () => {
@@ -59,9 +64,18 @@ const PlayMenu = ({
       }
       count++;
     }, 1000);
-    count > 3 ? console.log(count) : console.log("not count");
     if (hostHp <= 0) {
       // Victory sequence
+      setMessage("You have defeated Regis!");
+      let count = 0;
+      let displayMessage = setInterval(function () {
+        if (count > 3) {
+          clearInterval(displayMessage);
+          setMessage("");
+          backToStartMenu();
+        }
+        count++;
+      }, 1000);
     }
   };
 
