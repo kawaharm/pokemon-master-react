@@ -59,6 +59,7 @@ const PlayMenu = ({
       }
       count++;
     }, 1000);
+    count > 3 ? console.log(count) : console.log("not count");
     if (hostHp <= 0) {
       // Victory sequence
     }
