@@ -16,7 +16,11 @@ const HintMenu = ({
   // User clicks 50:50 button -> Removes two random wrong answer choices
   const handleFiftyFifty = () => {
     // Pick number 0, 1, or 2 randomly and push onto empty array
+    const wrongChoices = (wc) => wc.correct === false;
     let randomArr = [];
+    choices.map((c) => randomArr.push(choices.findIndex(wrongChoices)));
+    console.log(randomArr);
+
     while (randomArr.length < 2) {
       let random = Math.floor(Math.random() * 3);
       // If IndexOf === -1, then element is not present
