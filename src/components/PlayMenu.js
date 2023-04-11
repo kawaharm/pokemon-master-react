@@ -26,11 +26,6 @@ const PlayMenu = ({
     setAnswer(e.target.value === "true");
     setMenuChoice("verify");
     setMessage("Is this your final answer?");
-
-    const wrongChoices = (wc) => wc.correct === false;
-    let randomArr = [];
-    choices.map((c) => randomArr.push(choices.findIndex(wrongChoices)));
-    console.log(randomArr);
   };
 
   const handleFinalAnswer = () => {

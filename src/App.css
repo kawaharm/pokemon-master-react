@@ -123,6 +123,12 @@ img {
   margin: 10px 4px;
 }
 
+.hpContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: 10px 0;
+}
+
 .hpBar {
   grid-row: 2 / span 1;
   height: 25px;

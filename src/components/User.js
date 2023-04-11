@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import HpBar from "./HpBar";
 
 const User = ({ user, name, hp }) => {
   return (
@@ -10,14 +11,17 @@ const User = ({ user, name, hp }) => {
           <span className="username">{name}</span>
           <span>Lv:29</span>
         </div>
-        <label for="hpBar">HP</label>
-        <progress
+        <div className="hpContainer">
+          <label for="hpBar">HP</label>
+          <HpBar variant="determinate" value={hp} />
+        </div>
+        {/* <progress
           id="userHp"
           className="hpBar"
           value={hp}
           min="0"
           max={user.hpMax}
-        ></progress>
+        ></progress> */}
       </div>
     </div>
   );

@@ -24,7 +24,11 @@ const BattleScreen = ({ username, setUsername }) => {
   });
   let damageHostHp = () => setHostHp(hostHp - 12.5);
   let damageUserHp = () => setUserHp(0);
-  let nextQuestion = () => setCurrentQuestion(currentQuestion + 1);
+  let nextQuestion = () => {
+    setCurrentQuestion(currentQuestion + 1);
+    // Deactivate 50-50 hint removal
+    setRemoveChoices([]);
+  };
 
   const mainMenuButtons = {
     play: "Play",
@@ -70,7 +74,7 @@ const BattleScreen = ({ username, setUsername }) => {
     <div id="mainContainer" className="hidden">
       {/* <!-- Displays User name, HP bar, and image --> */}
       <Host host={host} question={questions[currentQuestion].q} hp={hostHp} />
-      <User user={user} name={hostHp} hp={userHp} />
+      <User user={user} name={name} hp={userHp} />
       {/* <!-- Displays battle options (PLAY, HELP, HINT, RUN) --> */}
       <div id="battleContainer">
         {/* <!-- MAIN MENU --> */}
