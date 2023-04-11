@@ -16,20 +16,16 @@ const HintMenu = ({
   // User clicks 50:50 button -> Removes two random wrong answer choices
   const handleFiftyFifty = () => {
     // Pick number 0, 1, or 2 randomly and push onto empty array
-    const wrongChoices = (wc) => wc.correct === false;
-    let randomArr = [];
-    choices.map((c) => randomArr.push(choices.findIndex(wrongChoices)));
-    console.log(randomArr);
+    let wrongChoices = choices.filter((c) => c.correct === false);
+    let wrongChoicesIdx = wrongChoices.map((wc) => {
+      return choices.indexOf(wc);
+    });
+    // Remove a random index from the wrong choices
+    let randomIdx = Math.floor(Math.random() * 3);
+    wrongChoicesIdx.splice(randomIdx, 1);
 
-    while (randomArr.length < 2) {
-      let random = Math.floor(Math.random() * 3);
-      // If IndexOf === -1, then element is not present
-      if (randomArr.indexOf(random) === -1) {
-        randomArr.push(random);
-      }
-    }
     // Hide two random answer choices from Play Menu
-    setRemoveChoices(randomArr);
+    setRemoveChoices(wrongChoicesIdx);
     backToMainMenu();
     setAvailableHints({ ...availableHints, fiftyFifty: false });
   };
