@@ -7,6 +7,14 @@ import User from "./User";
 import PlayMenu from "./PlayMenu";
 import HelpMenu from "./HelpMenu";
 import HintMenu from "./HintMenu";
+import {
+  correctSound,
+  questionSound,
+  suspenseSound,
+  verifySound,
+  victorySound,
+  wrongSound,
+} from "../soundEffects";
 
 const BattleScreen = ({ username, setUsername }) => {
   const { host, user, questions } = BattleData;
@@ -56,11 +64,28 @@ const BattleScreen = ({ username, setUsername }) => {
         setShowBattleScreen(false);
         setUsername();
         setRemoveChoices([]);
+        stopAudio();
         // Reset all data
         break;
       default:
         return;
     }
+  };
+
+  // Stop all sound effects
+  const stopAudio = () => {
+    suspenseSound.pause();
+    suspenseSound.load();
+    questionSound.pause();
+    questionSound.load();
+    correctSound.pause();
+    correctSound.load();
+    wrongSound.pause();
+    wrongSound.load();
+    verifySound.pause();
+    verifySound.load();
+    victorySound.pause();
+    victorySound.load();
   };
 
   const handleBackToMainMenu = () => {

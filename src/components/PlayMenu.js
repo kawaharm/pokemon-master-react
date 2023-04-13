@@ -1,8 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Context from "./context/Context.js";
 import "../App.js";
 import "../battleData.js";
 import MessageMenu from "./MessageMenu.js";
+import {
+  questionSound,
+  verifySound,
+  correctSound,
+  suspenseSound,
+  wrongSound,
+  victorySound,
+} from "../soundEffects.js";
 
 const PlayMenu = ({
   choices,
@@ -26,32 +34,33 @@ const PlayMenu = ({
     setAnswer(e.target.value === "true");
     setMenuChoice("verify");
     setMessage("Is this your final answer?");
+    questionSound.pause();
+    questionSound.load();
+    verifySound.play();
   };
 
   const handleFinalAnswer = () => {
     if (answer) {
       // 1a. Play correct answer sound
-      // 1b. Display "Its super effective" message
       correctAnswerSequence();
-      // 1c. Reduce opponent's HP
-
-      // 2. If opponent HP to zero, play victory sound and message
-      // 2. If not, next question
     } else {
       gameOverSequence();
-      // 1. Play GAME OVER message and sound
-      // 2. Reset all stats
-      // 2. Return to start screen
     }
     setMenuChoice("result");
   };
 
   const correctAnswerSequence = () => {
+    verifySound.pause();
+    verifySound.load();
+    correctSound.play();
     damageHostHp();
     setMessage("It's Super Effective!");
     let count = 0;
     let displayMessage = setInterval(function () {
       if (count > 3) {
+        correctSound.pause();
+        correctSound.load();
+        suspenseSound.play();
         clearInterval(displayMessage);
         setMessage("");
         nextQuestion();
@@ -61,6 +70,9 @@ const PlayMenu = ({
     }, 1000);
     if (hostHp <= 0) {
       // Victory sequence
+      correctSound.pause();
+      correctSound.load();
+      victorySound.play();
       setMessage("You have defeated Regis!");
       let count = 0;
       let displayMessage = setInterval(function () {
@@ -75,6 +87,9 @@ const PlayMenu = ({
   };
 
   const gameOverSequence = () => {
+    verifySound.pause();
+    verifySound.load();
+    wrongSound.play();
     damageUserHp();
     setMessage("You Have Fainted!");
     let count = 0;
@@ -122,6 +137,10 @@ const PlayMenu = ({
     ),
     result: <MessageMenu message={message} />,
   };
+
+  useEffect(() => {
+    questionSound.play();
+  }, []);
 
   return <>{MENU_SELECT[menuChoice]}</>;
 };

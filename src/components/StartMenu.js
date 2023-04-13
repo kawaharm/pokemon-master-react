@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import Context from "./context/Context";
 import BattleScreen from "./BattleScreen";
 import { Container, Box, Item } from "@mui/material";
+import { suspenseSound } from "../soundEffects";
 import "../App.css";
 
 const StartMenu = () => {
@@ -10,6 +11,7 @@ const StartMenu = () => {
 
   const handleSubmit = () => {
     setShowBattleScreen(true);
+    suspenseSound.play();
   };
 
   const handleChange = (e) => {
