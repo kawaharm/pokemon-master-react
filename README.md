@@ -7,7 +7,7 @@ Blending two of my childhood pastimes, I proudly present: **WHO WANTS TO BE A PO
 
 ## How To Play
 
-GAME: https://kawaharm.github.io/who-wants-to-be-a-pokemon-master/
+GAME: https://kawaharm.github.io/pokemon-master-react/
 
 1. At the Start Screen, enter your name and click LET'S PLAY or hit Enter.
 2. In the Main Menu, there are four buttons:
