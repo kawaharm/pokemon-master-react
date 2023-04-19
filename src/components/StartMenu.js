@@ -27,7 +27,7 @@ const StartMenu = () => {
           sx={{
             display: "grid",
             gridTemplateRows: "0.75fr, 0.25fr",
-            gap: 10,
+            gap: 1,
             height: 800,
             width: 1000,
             mx: "auto",
@@ -38,12 +38,14 @@ const StartMenu = () => {
             borderColor: "text.primary",
           }}
         >
-          <Box sx={{ display: "grid", m: "auto" }}>
+          <Box sx={{ display: "grid", m: "auto", mt: 3 }}>
             <img src="images/game-logo.png" alt="game logo" />
           </Box>
           <Box
             sx={{
-              display: "grid",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
               gridAutoRows: "1fr",
             }}
           >
