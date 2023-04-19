@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# Who Wants To Be A Pokemon Master
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+For my first project as a prospective software engineer, I have built a trivia game like no other. Blending two of my childhood pastimes, I proudly present: **WHO WANTS TO BE A POKEMON MASTER!** A crossover of the hit tv show _Who Wants To Be A Millionaire_ and popular video game franchise _Pokemon_, players choose Pikachu to take the hot seat against the original show host Regis Philbin as they answer multiple-choice questions using a RPG battle system similar to the Generation I Pokemon games. Each correct answer depletes a portion of the host's health points and gets you one step closer to victory. But beware, one wrong answer and your journey ends, sending you straight to the Pokemon Center to tend to your fainted Pikachu. So, do you have what it takes to be the next Pokemon Master?
 
-In the project directory, you can run:
+## Wireframe Flowchart
 
-### `npm start`
+I created a case diagram using wireframes that illustrates what events happen when a certain button is clicked. I also measured the areas of each main component of the game knowing that I would map it out using the CSS grid system.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![project1-wireframe](https://user-images.githubusercontent.com/92088326/141669633-550f20c6-25d3-4b22-8988-ce46fad25f1d.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Playing The Game
 
-### `npm test`
+## How To Play
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+GAME: https://kawaharm.github.io/who-wants-to-be-a-pokemon-master/
 
-### `npm run build`
+1. At the Start Screen, enter your name and click LET'S PLAY or hit Enter.
+2. In the Main Menu, there are four buttons:
+   - **PLAY:** Unveils 4 answer choices to the question. Players choose which of the four is the correct answer and will be asked "Is that your final answer?" before continuing. Answering correctly will deplete a portion of the host's HP and take the player to the next question. Answer incorrectly, the game is over.
+   - **HELP:** Instructions/How To Play
+   - **HINT:** Pick from two "Lifelines", each that can only be used once throughout the entire game.
+     - 50-50: _Removes two random incorrect answer choices_
+     - Call A Trainer: _A very intellectual trainer tells you the correct answer_
+   - **RUN:** Quit the game and return back to the Start Screen.
+3. Keep answering correctly until the host's HP is completely drained.
+4. Claim your title as a Pokemon Master!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Start Screen
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![screenshot-start](https://user-images.githubusercontent.com/92088326/141709071-b1ff93ae-0463-4554-a01c-d01676c0cfdb.jpg)
 
-### `npm run eject`
+#### Main Menu
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![screenshot-main](https://user-images.githubusercontent.com/92088326/141709079-39ee3cf2-720a-4042-8fc5-1e3521267440.jpg)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Play Menu
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![screenshot-choices](https://user-images.githubusercontent.com/92088326/141709532-a30c5c68-79b1-4a70-a511-0b7a844b6784.jpg)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Take that Regis!
 
-## Learn More
+![screenshot-correct](https://user-images.githubusercontent.com/92088326/141709545-9bc2f53b-c321-4dc1-9954-da66e4e3735b.jpg)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# How It Works
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Start Screen
 
-### Code Splitting
+The game switches off between two main `div` containers: the Start Screen and Main Screen. The game initializes on the Start Screen that contains an input textbox and submit button. Once the player enters a username and clicks the submit button, an event handler hides the Start Screen and unhides the Main Screen by toggling the `class="hidden"` in each `div`. At the same time, the event handler grabs the string from the textbox and copies the value onto the Main Screen, where it is displayed in the player's HP bar and caption.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+document.getElementById("input-form").addEventListener("submit", function (e) {
+    // Please don't refresh the page (the default behavior of a form)
+    e.preventDefault();
 
-### Analyzing the Bundle Size
+    // Grab value from username input on Start Screen
+    const username = document.getElementById("input-text").value;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    // Switch from Start Screen to Main Screen
+    updateMenu(1);
 
-### Making a Progressive Web App
+    // Switch main theme song to music during guessing question
+    mainTheme.pause();
+    suspenseSound.play();
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    // Add username to Main Screen
+    document.querySelector(".username").innerHTML = username;
+    let caption = document.createElement("h3");
+    caption.setAttribute("class", "caption");
+    caption.innerHTML = `What will ${username} do?`;
+    captionNode.appendChild(caption);
+})
+```
 
-### Advanced Configuration
+## Main Screen
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The Main Screen is divided into three horizontal sections: Host container (top), User container (middle), and Main Menu (bottom).
 
-### Deployment
+### Host Container
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The Host container displays the host's name, level, HP bar, questions, and image. The host characteristics, such as the name and level, are built using a class and constructor method. This is so I can add more hosts besides Regis Philbin in the future. The questions are stored in an array of objects called `myQuestions`. Each object contains a question string and answer array with each answer choice and correct boolean (true if correct answer, false if wrong answer) nested in objects. The function `nextQuestion(num)` generates the questions onto the Host container by taking in the current index (num) of the question array.
 
-### `npm run build` fails to minify
+```
+const myQuestions = [
+    {
+        question: "According to the old saying, what “is the root of all evil”?",
+        answers: [
+            { choice: "A: Food", correct: false },
+            { choice: "B: Clothing", correct: false },
+            { choice: "C: Money", correct: true },
+            { choice: "D: Javascript", correct: false },
+        ]
+    },
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### User Container
+
+The User container displays the player's name (from Start Screen), level, HP bar and image.
+
+### Main Menu
+
+The Main Menu is where all the user interface controls happen. The player has four menu options: PLAY, HELP, HINT, and RUN. A click event handler utilizes the `e.target` property to access the four menus. Each time a button is pressed in the Main Menu, the function `updateMenu(id)` is called to toggle the `class="hidden"` of the Main Menu node and the button's parent node based on the case number (id) parameter. For example, in the Main Menu, all menus except the Main Menu are hidden because they share a "hidden" class. If the player clicks the PLAY button, the click event handler invokes `updateMenu(2)` to hide the Main Menu by adding the "hidden" class to its node and removing the "hidden" class from the PLAY button's parent node.
+
+```
+function updateMenu(id) {
+    switch(id) {
+        case 1:     // Start Screen <-> Main Menu
+            document.getElementById("startScreen").classList.toggle("hidden");
+            document.getElementById("mainContainer").classList.toggle("hidden");
+            document.getElementById("mainMenu").classList.toggle("hidden");
+            break;
+        case 2:     // Main Menu <-> Play Menu
+            document.getElementById("mainMenu").classList.toggle("hidden");
+            document.getElementById("playMenu").classList.toggle("hidden");
+            break;
+```
+
+### Play Menu
+
+The Play Menu consists of 4 answer choice buttons and a back button that returns to the Main Menu. The answer choices are generated by a `forEach` loop in the `nextQuestion(num)` function that goes through the answer arrays of the `myQuestions` array and creates a button with a class of "correct" or "wrong" based on the correct boolean as noted earlier.
+
+```
+myQuestions[num].answers.forEach(function (answer) {
+        let button = document.createElement("button");
+        button.setAttribute("id", `choice${choiceCount}`);
+        button.innerText = answer.choice;
+        button.classList.add("playButton", "choices");
+        // Add class "correct" if answer is correct, "wrong" if incorrect
+        if (answer.correct) {
+            button.classList.add("correct");
+        } else {
+            button.classList.add("wrong")
+        }
+        playNode.appendChild(button);
+        choiceCount++;
+    });
+```
+
+Each time a choice is selected, the player is then asked "Is this your final answer?" to which they press the YES or BACK button. Clicking the YES button with the correct answer will increment the `hostDamage` value and subtract it from the host's max HP bar value.
+
+### Hint Menu
+
+## Game Over and Victory Sequence
