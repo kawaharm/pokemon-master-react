@@ -2,15 +2,8 @@
 
 ## Introduction
 
-For my first project as a prospective software engineer, I have built a trivia game like no other. Blending two of my childhood pastimes, I proudly present: **WHO WANTS TO BE A POKEMON MASTER!** A crossover of the hit tv show _Who Wants To Be A Millionaire_ and popular video game franchise _Pokemon_, players choose Pikachu to take the hot seat against the original show host Regis Philbin as they answer multiple-choice questions using a RPG battle system similar to the Generation I Pokemon games. Each correct answer depletes a portion of the host's health points and gets you one step closer to victory. But beware, one wrong answer and your journey ends, sending you straight to the Pokemon Center to tend to your fainted Pikachu. So, do you have what it takes to be the next Pokemon Master?
-
-## Wireframe Flowchart
-
-I created a case diagram using wireframes that illustrates what events happen when a certain button is clicked. I also measured the areas of each main component of the game knowing that I would map it out using the CSS grid system.
-
-![project1-wireframe](https://user-images.githubusercontent.com/92088326/141669633-550f20c6-25d3-4b22-8988-ce46fad25f1d.png)
-
-# Playing The Game
+An updated version of my first project (see original https://github.com/kawaharm/who-wants-to-be-a-pokemon-master) using React and Material UI. 
+Blending two of my childhood pastimes, I proudly present: **WHO WANTS TO BE A POKEMON MASTER!** A crossover of the hit tv show _Who Wants To Be A Millionaire_ and popular video game franchise _Pokemon_, players choose Pikachu to take the hot seat against the original show host Regis Philbin as they answer multiple-choice questions using a RPG battle system similar to the Generation I Pokemon games. Each correct answer depletes a portion of the host's health points and gets you one step closer to victory. But beware, one wrong answer and your journey ends, sending you straight to the Pokemon Center to tend to your fainted Pikachu. So, do you have what it takes to be the next Pokemon Master?
 
 ## How To Play
 
