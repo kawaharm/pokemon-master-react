@@ -110,6 +110,7 @@ const PlayMenu = ({
           return (
             <button
               key={index}
+              id={`choice${index + 1}`}
               className={`playButton choices ${
                 removeChoices.includes(index) && "hideChoice"
               }`}
