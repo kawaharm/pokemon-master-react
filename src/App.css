@@ -92,11 +92,6 @@ img {
   padding: 30px;
 }
 
-/* #startScreen.hidden,
-#mainContainer.hidden {
-  display: none;
-} */
-
 #hostContainer {
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
@@ -234,15 +229,6 @@ label {
   padding: 10px;
 }
 
-/* #mainMenu.hidden,
-#playMenu.hidden,
-#helpMenu.hidden,
-#hintMenu.hidden,
-#messageMenu.hidden,
-#verifyMenu.hidden {
-  display: none;
-} */
-
 .choices {
   padding: 10px;
   font-size: 20px;
@@ -309,15 +295,6 @@ label {
   grid-column: 1 / span 3;
   padding: 10px 30px;
 }
-
-/* #fifty50.hidden,
-#call-a-trainer.hidden {
-  display: none;
-}
-
-.playButton.choices.wrong.hidden {
-  display: none;
-} */
 
 #verifyMessage {
   padding: 10px 30px;
