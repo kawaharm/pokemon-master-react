@@ -1,11 +1,12 @@
 import React from "react";
 import "../App.css";
 import HpBar from "./HpBar";
+import userImage from "../images/pikachu.png";
 
 const User = ({ user, name, hp }) => {
   return (
     <div id="userContainer">
-      <img id="userImage" src="images/pikachu.png" alt="pikachu" />
+      <img id="userImage" src={userImage} alt="pikachu" />
       <div id="userBar">
         <div className="nameAndLvl">
           <span className="username">{name}</span>

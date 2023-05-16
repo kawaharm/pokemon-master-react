@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import Context from "./context/Context";
 import BattleScreen from "./BattleScreen";
-import { Container, Box, Item } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { suspenseSound } from "../soundEffects";
+import gameLogo from "../images/game-logo.png";
 import "../App.css";
 
 const StartMenu = () => {
@@ -39,7 +40,7 @@ const StartMenu = () => {
           }}
         >
           <Box sx={{ display: "grid", m: "auto", mt: 3 }}>
-            <img src="images/game-logo.png" alt="game logo" />
+            <img src={gameLogo} alt="game logo" />
           </Box>
           <Box
             sx={{

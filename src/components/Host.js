@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import HpBar from "./HpBar";
+import hostImage from "../images/regis-philbin.png";
 
 const Host = ({ host, question, hp }) => {
   return (
@@ -16,7 +17,7 @@ const Host = ({ host, question, hp }) => {
         </div>
         <div className="question">{question}</div>
       </div>
-      <img id="hostImage" src="images/regis-philbin.png" alt="regis-philbin" />
+      <img id="hostImage" src={hostImage} alt="regis-philbin" />
     </div>
   );
 };
