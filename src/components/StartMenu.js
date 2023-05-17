@@ -62,6 +62,10 @@ const StartMenu = () => {
               value="LET'S PLAY!"
               onClick={handleSubmit}
             />
+            <p className="warningMsg">
+              * SOUND WARNING * This game contains sound effects. Please adjust
+              volume as necessary for better gaming experience.
+            </p>
           </Box>
         </Box>
       )}
