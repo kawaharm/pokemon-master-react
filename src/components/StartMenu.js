@@ -64,7 +64,7 @@ const StartMenu = () => {
             />
             <p className="warningMsg">
               * SOUND WARNING * This game contains sound effects. Please adjust
-              volume as necessary for better gaming experience.
+              volume as necessary for optimal gaming experience.
             </p>
           </Box>
         </Box>
