@@ -24,11 +24,6 @@ verifySound.volume = 0.3;
 let victorySound = new Audio(victory); // Play during Victory sequence
 victorySound.volume = 0.3;
 
-// // Play main theme song at load
-// mainTheme.addEventListener("loadeddata", function() {
-//     this.play();
-// })
-
 export {
   mainTheme,
   suspenseSound,
