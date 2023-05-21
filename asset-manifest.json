@@ -1,15 +1,24 @@
 {
   "files": {
-    "main.css": "/pokemon-master-react/static/css/main.db021a9c.css",
-    "main.js": "/pokemon-master-react/static/js/main.fb5f2889.js",
+    "main.css": "/pokemon-master-react/static/css/main.b194791e.css",
+    "main.js": "/pokemon-master-react/static/js/main.0ec5fc5b.js",
     "static/js/787.43c439a8.chunk.js": "/pokemon-master-react/static/js/787.43c439a8.chunk.js",
+    "static/media/question-music.mp3": "/pokemon-master-react/static/media/question-music.ba440b96a2a479c94596.mp3",
+    "static/media/game-logo.png": "/pokemon-master-react/static/media/game-logo.124495409abb48722bf5.png",
+    "static/media/main-theme.mp3": "/pokemon-master-react/static/media/main-theme.6060b999db760597adb4.mp3",
+    "static/media/final-answer.mp3": "/pokemon-master-react/static/media/final-answer.bcf988e151abedc08e2d.mp3",
+    "static/media/regis-philbin.png": "/pokemon-master-react/static/media/regis-philbin.378dced0a8fe884b85bc.png",
+    "static/media/victory.mp3": "/pokemon-master-react/static/media/victory.02df4387bfde6190a7cf.mp3",
+    "static/media/lets-play.mp3": "/pokemon-master-react/static/media/lets-play.8e5f6d1d81d4e1414b95.mp3",
+    "static/media/correct-answer.mp3": "/pokemon-master-react/static/media/correct-answer.160572d72c858155072e.mp3",
+    "static/media/wrong-answer.mp3": "/pokemon-master-react/static/media/wrong-answer.e946821894ae9b0a0d6f.mp3",
     "index.html": "/pokemon-master-react/index.html",
-    "main.db021a9c.css.map": "/pokemon-master-react/static/css/main.db021a9c.css.map",
-    "main.fb5f2889.js.map": "/pokemon-master-react/static/js/main.fb5f2889.js.map",
+    "main.b194791e.css.map": "/pokemon-master-react/static/css/main.b194791e.css.map",
+    "main.0ec5fc5b.js.map": "/pokemon-master-react/static/js/main.0ec5fc5b.js.map",
     "787.43c439a8.chunk.js.map": "/pokemon-master-react/static/js/787.43c439a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.db021a9c.css",
-    "static/js/main.fb5f2889.js"
+    "static/css/main.b194791e.css",
+    "static/js/main.0ec5fc5b.js"
   ]
 }
